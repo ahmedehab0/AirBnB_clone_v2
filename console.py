@@ -52,11 +52,12 @@ class HBNBCommand(cmd.Cmd):
                     instance.save()
                     storage_instance = storage.all()
                     if len(obj) > 1:
-                        for i in range(1, len(obj) - 1):
+                        for i in range(1, len(obj)):
                             new_obj = obj[i].split('=')
                             value = new_obj[1]
                             if value[0] == value[-1] == '"':
-                                if '_' in new_obj[1]:
+                                value = value[1: -1]
+                                if '_' in value:
                                     value = new_obj[1].replace('_', ' ')
                             else:
                                 try:

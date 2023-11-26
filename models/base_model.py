@@ -1,14 +1,20 @@
 """base module"""
 
-
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Integer, Column, String, DateTime
 import datetime
 import uuid
 import models
 
+Base = declarative_base()
 
 class BaseModel:
     """base model that defines all common attributes
     for other classes"""
+
+    id = Column(String(60), nullable = False, primary_key = True)
+    created_at = Column(DateTime, default=datetime.datetime.utcnow(), nullable = False)
+    updated_at = Column(DateTime, default=datetime.datetime.utcnow(), nullable = False)
     def __init__(self, *args, **kwargs):
         """
         initialization method
@@ -44,6 +50,7 @@ class BaseModel:
         """ updates the public instance attribute updated_at
         with the current datetime"""
         self.updated_at = datetime.datetime.now()
+        models.storage.new(self)
         models.storage.save()
 
     def to_dict(self):
@@ -56,4 +63,10 @@ class BaseModel:
             else:
                 hash_table[key] = value
         hash_table["__class__"] = self.__class__.__name__
+        if "sa_instance_state" in hash_table:
+            del hash_table["sa_instance_state"]
         return hash_table
+
+    def delete(self):
+        """delete the current instance from the storage"""
+        models.storage.delete(self)

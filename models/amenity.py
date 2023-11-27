@@ -2,15 +2,10 @@
 
 
 import models
-from models.base_model import BaseModel, Base
-from sqlalchemy import Integer, ForeignKey, String, Column
-from sqlalchemy.orm import relationship
+from models.base_model import BaseModel
 
 
-class Amenity(BaseModel, Base):
+class Amenity(BaseModel):
     """Amenity class"""
 
-    __tablename__ = "amenities"
-
-    name = Column(String(128), nullable = False)
-    place_amenities = relationship("Place", secondary="place_amenity", viewonly=False)
+    name = ""

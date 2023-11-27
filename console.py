@@ -49,8 +49,6 @@ class HBNBCommand(cmd.Cmd):
                 if key == obj[0]:
                     class_obj = value
                     instance = class_obj()
-                    instance.save()
-                    storage_instance = storage.all()
                     if len(obj) > 1:
                         for i in range(1, len(obj)):
                             new_obj = obj[i].split('=')
@@ -67,7 +65,7 @@ class HBNBCommand(cmd.Cmd):
                                         value = float(value)
                                     except:
                                         continue
-                            setattr(storage_instance[obj[0] + '.' + instance.id], new_obj[0], value)
+                            setattr(instance, new_obj[0], value)
                     
                         instance.save()
                     print(instance.id)

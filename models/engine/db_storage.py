@@ -29,7 +29,6 @@ class DBStorage:
         if getenv('HBNB_ENV') == 'test':
             Base.metadata.drop_all(self.__engine)
     
-    @classmethod
     def all(self, cls=None):
         '''
         query for all objects on the current database session
@@ -44,6 +43,8 @@ class DBStorage:
         }
         new_dict = {}
         if cls:
+            if type(cls) is str:
+                cls = eval(cls)
             query_rows = self.__session.query(cls)
             for obj in query_rows:
                 key = obj.__class__.__name__ + '.' + obj.id

@@ -104,8 +104,8 @@ class HBNBCommand(cmd.Cmd):
         """prints all string representation of all instances
         based or not on a class name\n"""
 
-        instances = storage.all()
         if not obj:
+            instances = storage.all()
             for values in instances.values():
                 print(values)
             return
@@ -115,11 +115,9 @@ class HBNBCommand(cmd.Cmd):
             if obj not in classes:
                 print("** class doesn't exist **")
                 return
-
-            for keys, values in instances.items():
-                model = keys.split(".")
-                if model[0] == obj:
-                    print(values)
+            instances = storage.all(obj)
+            for values in instances.values():
+                print(values)
 
     def do_destroy(self, line):
         """destroys an instance based on name and id of the class\n"""

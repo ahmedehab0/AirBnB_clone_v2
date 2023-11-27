@@ -82,7 +82,7 @@ class HBNBCommand(cmd.Cmd):
         """prints the string representation of an instance based on
         the class name and id\n"""
 
-        classes = ["BaseModel", "User", "State", "Amenity", "Place", "Review"]
+        classes = ["BaseModel", "User", "State", "Amenity", "Place", "Review", "City"]
         instance = storage.all()
         if not line:
             print("** class name missing **")
@@ -93,6 +93,7 @@ class HBNBCommand(cmd.Cmd):
             return
         elif argv[0] not in classes:
             print("class doesn't exist")
+            return
 
         obj = argv[0] + '.' + argv[1]
         for key, value in instance.items():
@@ -112,9 +113,10 @@ class HBNBCommand(cmd.Cmd):
             return
         else:
             classes = ["BaseModel", "User", "State", "Amenity",
-                       "Place", "Review"]
+                       "Place", "Review", "City"]
             if obj not in classes:
                 print("** class doesn't exist **")
+                return
 
             for keys, values in instances.items():
                 model = keys.split(".")
@@ -135,6 +137,7 @@ class HBNBCommand(cmd.Cmd):
             return
         elif argv[0] not in classes:
             print("class doesn't exist")
+            return
         obj = argv[0] + '.' + argv[1]
         if obj in instance.keys():
             del instance[obj]

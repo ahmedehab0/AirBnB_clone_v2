@@ -62,8 +62,8 @@ class BaseModel:
             else:
                 hash_table[key] = value
         hash_table["__class__"] = self.__class__.__name__
-        if "sa_instance_state" in hash_table:
-            del hash_table["sa_instance_state"]
+        if '_sa_instance_state' in hash_table:
+            del hash_table['_sa_instance_state']
         return hash_table
 
     def delete(self):

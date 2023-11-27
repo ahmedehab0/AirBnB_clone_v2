@@ -30,9 +30,9 @@ class DBStorage:
             Base.metadata.drop_all(self.__engine)
     
     def all(self, cls=None):
-        '''
+        """
         query for all objects on the current database session
-        '''
+        """        
         classes = {
             "City": City,
             "State": State,
@@ -53,12 +53,14 @@ class DBStorage:
 
         else:
             for name, value in classes.items():
-                query_rows = self.__session.query(value)
+                try:
+                    query_rows = self.__session.query(value)
+                except Exception:
+                    continue
                 for obj in query_rows:
                     key = name + '.' + obj.id
                     new_dict[key] = obj
-                return new_dict
-
+            return new_dict
     def new(self, obj):
         """add the objedt to the current database"""
         self.__session.add(obj)
@@ -77,4 +79,4 @@ class DBStorage:
         Base.metadata.create_all(self.__engine)
         sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(sess_factory)
-        self.__session = Session
+        self.__session = Session()

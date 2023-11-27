@@ -183,7 +183,7 @@ class HBNBCommand(cmd.Cmd):
            this <class name>.commnad()
         """
 
-        names = ["BaseModel", "User", "State", "Amenity", "Place", "Review"]
+        names = ["BaseModel", "User", "State", "Amenity", "Place", "Review", "City"]
         classes = {"all": self.do_all,
                    "count": self.do_count,
                    "show": self.do_show,

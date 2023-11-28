@@ -123,7 +123,7 @@ class HBNBCommand(cmd.Cmd):
     def do_destroy(self, line):
         """destroys an instance based on name and id of the class\n"""
 
-        classes = ["BaseModel", "User", "State", "Amenity", "Place", "Review"]
+        classes = ["BaseModel", "User", "State", "Amenity", "Place", "Review", "City"]
         instance = storage.all()
         if not line:
             print("** class name missing **")
@@ -145,7 +145,7 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, line):
         """updates an instance based on the class name and id\n"""
 
-        classes = ["BaseModel", "User", "State", "Amenity", "Place", "Review"]
+        classes = ["BaseModel", "User", "State", "Amenity", "Place", "Review", "City"]
         instance = storage.all()
         if not line:
             print("** class name missing **")

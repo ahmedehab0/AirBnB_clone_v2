@@ -68,7 +68,7 @@ class HBNBCommand(cmd.Cmd):
                             setattr(instance, new_obj[0], value)
                     
                         instance.save()
-                    print(instance.id)
+                        print(instance.id)
                     return
 
             print("** class doesn't exist **")

@@ -69,6 +69,7 @@ class HBNBCommand(cmd.Cmd):
                     
                         instance.save()
                         print(instance.id)
+                    instance.save()
                     return
 
             print("** class doesn't exist **")

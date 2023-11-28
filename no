@@ -1,0 +1,21 @@
+Revert "never mind i will revert it any ways"
+
+This reverts commit 502b6c6f7774897927afb900236da58e7beb9931.
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+# Changes to be committed:
+#	deleted:    main_place_amenities.py
+#	modified:   models/__pycache__/amenity.cpython-311.pyc
+#	modified:   models/__pycache__/place.cpython-311.pyc
+#	modified:   models/__pycache__/state.cpython-311.pyc
+#	modified:   models/__pycache__/user.cpython-311.pyc
+#	modified:   models/amenity.py
+#	modified:   models/place.py
+#	modified:   models/state.py
+#	modified:   models/user.py
+#

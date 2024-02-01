@@ -21,7 +21,7 @@ fi
 
 ln -s /data/web_static/releases/test /data/web_static/current
 chown -R ubuntu:ubuntu /data/
-sed -i '16 i \\n\tlocation /hbnb_static {\n\talias /data/web_static/current;\n\t}' /etc/nginx/sites-available/default
+sed -i '51 i \\n\tlocation /hbnb_static {\n\talias /data/web_static/current;\n\t}' /etc/nginx/sites-available/default
 
 service nginx restart
 

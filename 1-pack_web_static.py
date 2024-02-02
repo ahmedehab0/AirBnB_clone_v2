@@ -8,14 +8,12 @@ the web static folder
 
 from datetime import datetime
 from fabric.api import local
-from os.path import isdir
 
 
 def do_pack():
     date = datetime.now().strftime("%Y%m%d%H%M%S")
 
-    if isdir("versions") is False:
-        local("mkdir versions")
+    local("mkdir -p versions")
     filename = "web_static_{}.tgz".format(date)
     result = local("tar -cvzf versions/{} web_static".format(filename))
     exit_status = result.return_code 

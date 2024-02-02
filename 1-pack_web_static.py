@@ -7,21 +7,20 @@ the web static folder
 
 
 from datetime import datetime
-import fabric
-from fabric.contrib.console import confirm
-import os
+from fabric.api import local
+from os.path import isdir
 
 
 def do_pack():
     date = datetime.now().strftime("%Y%m%d%H%M%S")
 
-    if os.isdir("versions") is False:
+    if isdir("versions") is False:
         local("mkdir versions")
-    filename = "web_static_{}".fromat(date)
+    filename = "web_static_{}".format(date)
     result = local("tar -cvzf versions/{} web_static".format(filename))
     exit_status = result.return_code 
     if exit_status == 0:
-        return "versions/{}".fromat(filename)
+        return "versions/{}".format(filename)
     else:
         return None
 

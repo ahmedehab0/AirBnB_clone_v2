@@ -12,6 +12,10 @@ env.user = 'ubuntu'
 env.use_ssh_config = True
 
 def do_deploy(archive_path):
+    """
+    deploy archive to wev servers
+    """
+
     if exists(archive_path):
         filename = archive_path.split('/')[1]
         dest = '/data/web_static/releases/' + filename[:-4]

@@ -12,10 +12,11 @@ env.user = 'ubuntu'
 env.use_ssh_config = True
 
 def do_deploy(archive_path):
-        '''
+    '''
     Deploy archive to web server
     '''
-    if not os.path.exists(archive_path):
+
+    if not exists(archive_path):
         return False
     file_name = archive_path.split('/')[1]
     file_path = '/data/web_static/releases/'

@@ -1,7 +1,10 @@
+#!/usr/bin/python3
+""" runs a flask application"""
+
+
 from flask import Flask, render_template
 from models import storage
 
-""" runs a flask application"""
 
 
 app = Flask(__name__)

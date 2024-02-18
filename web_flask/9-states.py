@@ -14,21 +14,16 @@ def teardown(exception):
     storage.close()
 
 @app.route("/states", strict_slashes=False)
-def states_list():
-    """return html page with all states presend in dbstorage"""
-
-    states = sorted(list(storage.all("State").values()), key = lambda x:x.name)
-    return render_template('9-states.html', states=states)
-
 @app.route("/states/<state_id>", strict_slashes=False)
-def states_id(state_id):
+def states_id(state_id=None):
+    """return html page with all states presend in dbstorage"""
     states = sorted(list(storage.all(State).values()), key = lambda x:x.name)
     found_state = None
     for state in states:
         if state_id == state.id:
             found_state = state
 
-    return render_template('9-states.html', found_state=found_state, state_id=state_id)
+    return render_template('9-states.html', states=states, found_state=found_state, state_id=state_id)
 
 
 if __name__ == "__main__":

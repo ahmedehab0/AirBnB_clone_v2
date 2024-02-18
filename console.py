@@ -137,7 +137,7 @@ class HBNBCommand(cmd.Cmd):
             return
         obj = argv[0] + '.' + argv[1]
         if obj in instance.keys():
-            del instance[obj]
+            del(instance[obj])
             storage.save()
         else:
             print("** no instance found **")

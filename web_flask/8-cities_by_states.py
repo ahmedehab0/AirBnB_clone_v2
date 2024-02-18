@@ -18,9 +18,8 @@ def ciites_by_states():
     """returns html page with all the cities related to astate in the database"""
 
     states = sorted(list(storage.all(State).values()), key = lambda x:x.name)
-    cities = sorted(states.cities, key = lambda x:x.name)
-    return render_template('8-cities_by_states.html', states=states, cities = cities)
+    return render_template('8-cities_by_states.html', states=states)
 
-
+    cities = sorted(list(states.cities), key = lambda x:x.name)
 if __name__ == '__main__':
     app.run(debug=True)

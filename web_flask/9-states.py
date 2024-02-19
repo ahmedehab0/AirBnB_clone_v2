@@ -13,6 +13,7 @@ def teardown(exception):
     """closes the storage on teardown"""
     storage.close()
 
+
 @app.route("/states", strict_slashes=False)
 @app.route("/states/<state_id>", strict_slashes=False)
 def states_id(state_id=None):
